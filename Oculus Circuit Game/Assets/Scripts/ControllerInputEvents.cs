@@ -19,7 +19,7 @@ public class ControllerInputEvents : MonoBehaviour
     private bool rightTriggerDown;
 
     // The value (between 0 and 1) where a trigger is considered released / not pressed
-    private float notPressedZone = 0.1f;
+    private readonly float notPressedZone = 0.1f;
 
     // Start is called before the first frame update
     void Start()

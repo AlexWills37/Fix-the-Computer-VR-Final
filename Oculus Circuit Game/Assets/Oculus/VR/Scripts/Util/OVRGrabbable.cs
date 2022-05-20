@@ -12,6 +12,7 @@ permissions and limitations under the License.
 
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// An object that can be grabbed and thrown by OVRGrabber.
@@ -21,6 +22,7 @@ public class OVRGrabbable : MonoBehaviour
 
     // This boolean will help us make sure we only count grabbing this item once
     public bool isCounted = false;
+    public UnityEvent grabbedForFirstTime;
 
     [SerializeField]
     protected bool m_allowOffhandGrab = true;
@@ -36,6 +38,9 @@ public class OVRGrabbable : MonoBehaviour
     protected bool m_grabbedKinematic = false;
     protected Collider m_grabbedCollider = null;
     protected OVRGrabber m_grabbedBy = null;
+
+    [Tooltip("If true, grab release will force the object to be kinematic.")]
+    public bool overrideKimematic = false;
 
 	/// <summary>
 	/// If true, the object can currently be grabbed.
@@ -151,6 +156,10 @@ public class OVRGrabbable : MonoBehaviour
     protected virtual void Start()
     {
         m_grabbedKinematic = GetComponent<Rigidbody>().isKinematic;
+        if (overrideKimematic)
+        {
+            m_grabbedKinematic = false;
+        }
     }
 
     void OnDestroy()

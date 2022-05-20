@@ -36,12 +36,19 @@ public class TeleportTransitionBlink : TeleportTransition
 	/// </summary>
 	[Tooltip("Fade to black over the duration of the transition")]
 	public AnimationCurve FadeLevels = new AnimationCurve(new Keyframe[3] { new Keyframe(0,0), new Keyframe(0.5f, 1.0f), new Keyframe(1.0f, 0.0f) });
-	
-	/// <summary>
-	/// When the teleport state is entered, start a coroutine that will handle the
-	/// actual transition effect.
-	/// </summary>
-	protected override void LocomotionTeleportOnEnterStateTeleporting()
+
+	private OVRScreenFade screenFade;
+
+    private void Start()
+    {
+		this.screenFade = this.GetComponent<OVRScreenFade>();
+    }
+
+    /// <summary>
+    /// When the teleport state is entered, start a coroutine that will handle the
+    /// actual transition effect.
+    /// </summary>
+    protected override void LocomotionTeleportOnEnterStateTeleporting()
 	{
 		StartCoroutine(BlinkCoroutine());
 	}
@@ -66,7 +73,8 @@ public class TeleportTransitionBlink : TeleportTransition
 				teleported = true;
 				LocomotionTeleport.DoTeleport();
 			}
-			//float fadeLevel = FadeLevels.Evaluate(elapsedTime / TransitionDuration);
+			float fadeLevel = FadeLevels.Evaluate(elapsedTime / TransitionDuration);
+			screenFade.SetExplicitFade(fadeLevel);
 			//OVRInspector.instance.fader.SetFadeLevel(fadeLevel);
 		}
 

@@ -270,6 +270,7 @@ public class OVRGrabber : MonoBehaviour
             {
                 newObjectGrabbed.Invoke();
                 closestGrabbable.isCounted = true;
+                closestGrabbable.grabbedForFirstTime.Invoke();
             }
 
             if (closestGrabbable.isGrabbed)
