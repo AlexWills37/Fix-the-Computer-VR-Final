@@ -30,5 +30,12 @@ User Feedback:
   Thank you to everyone who came to NCF Demo Day and gave me feedback on this project!
   
 Specific Unity Components:
-  various sections in the Unity manual: https://docs.unity3d.com/2019.4/Documentation/Manual/UnityManual.html
+  Various sections in the Unity manual: https://docs.unity3d.com/2019.4/Documentation/Manual/UnityManual.html
   Especially helpful with Line Renderer and Material
+  
+Circuit knowledge:
+  NAND2Tetris cirriculum
+  Computer Architecture class with Professor Eaton
+  
+Support:
+  Thank you to everyone in the VR class for sticking together!
